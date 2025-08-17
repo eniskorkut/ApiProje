@@ -44,6 +44,7 @@ namespace ApiProjeKampi.WebApi.Controllers
         {
            var value = _context.Chefs.Find(id);
             _context.Chefs.Remove(value);
+            _context.SaveChanges();
             return Ok("Şef silme işlemi başarılı");
         }
 

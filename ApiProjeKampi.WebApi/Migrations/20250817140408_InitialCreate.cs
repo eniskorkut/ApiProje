@@ -47,11 +47,11 @@ namespace ApiProjeKampi.WebApi.Migrations
                 {
                     ContactId = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    NameSurname = table.Column<string>(type: "text", nullable: false),
+                    MapLocation = table.Column<string>(type: "text", nullable: false),
+                    Address = table.Column<string>(type: "text", nullable: false),
+                    Phone = table.Column<string>(type: "text", nullable: false),
                     Email = table.Column<string>(type: "text", nullable: false),
-                    Subject = table.Column<string>(type: "text", nullable: false),
-                    Message = table.Column<string>(type: "text", nullable: false),
-                    SendDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    OpenHours = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {

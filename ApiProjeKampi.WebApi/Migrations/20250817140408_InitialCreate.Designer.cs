@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ApiProjeKampi.WebApi.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20250817123107_InitialCreate")]
+    [Migration("20250817140408_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -79,22 +79,23 @@ namespace ApiProjeKampi.WebApi.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ContactId"));
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("Message")
+                    b.Property<string>("MapLocation")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("NameSurname")
+                    b.Property<string>("OpenHours")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("SendDate")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<string>("Subject")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("text");
 
