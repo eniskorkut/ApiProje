@@ -1,14 +1,12 @@
-﻿using System;
-namespace ApiProjeKampi.WebApi.Entities
+using System;
+
+namespace ApiProjeKampi.WebApi.Dtos.ContactDto;
+
+public class CreateContactDto
 {
-	public class Contact
-	{
-		public int ContactId { get; set; }
         public string MapLocation { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
         public string OpenHours { get; set; }
-    }
 }
-
