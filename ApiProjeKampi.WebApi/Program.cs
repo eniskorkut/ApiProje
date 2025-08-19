@@ -1,10 +1,14 @@
 ﻿using System.Reflection;
 using ApiProjeKampi.WebApi.Context;
+using DotNetEnv;
 using ApiProjeKampi.WebApi.Entities;
 using ApiProjeKampi.WebApi.ValidationRules;
 using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// .env yükle (varsa)
+try { Env.Load(); } catch { /* yoksa sorun değil */ }
 
 
 

@@ -1,3 +1,7 @@
+# Environment files
+ApiProjeKampi.WebApi/.env
+ApiProjeKampi.WebApi/.env.*
+!ApiProjeKampi.WebApi/.env.example
 # .NET Core
 bin/
 obj/

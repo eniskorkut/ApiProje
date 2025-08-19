@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using ApiProjeKampi.WebApi.Entities;
+using System;
 
 namespace ApiProjeKampi.WebApi.Context
 {
@@ -14,7 +15,18 @@ namespace ApiProjeKampi.WebApi.Context
 		{
 			if (!optionsBuilder.IsConfigured)
 			{
-				optionsBuilder.UseNpgsql("Server=localhost;Port=5432;Database=ApiProjeKampiDb;User Id=postgres;Password=123456em;");
+				var envConn =
+					Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection") ??
+					Environment.GetEnvironmentVariable("DEFAULT_CONNECTION") ??
+					Environment.GetEnvironmentVariable("CONNECTION_STR");
+
+				if (string.IsNullOrWhiteSpace(envConn))
+				{
+					throw new InvalidOperationException(
+						"Connection string not found. Set environment variable 'ConnectionStrings__DefaultConnection' or 'DEFAULT_CONNECTION' or provide options in AddDbContext.");
+				}
+
+				optionsBuilder.UseNpgsql(envConn);
 			}
 		}
 
