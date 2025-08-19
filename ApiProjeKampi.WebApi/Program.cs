@@ -1,4 +1,8 @@
-﻿using ApiProjeKampi.WebApi.Context;
+﻿using System.Reflection;
+using ApiProjeKampi.WebApi.Context;
+using ApiProjeKampi.WebApi.Entities;
+using ApiProjeKampi.WebApi.ValidationRules;
+using FluentValidation;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<ApiContext>();// constructer kullandığımı bildirdim.
+builder.Services.AddScoped<IValidator<Product>, ProductValidator>(); // ProductValidator sınıfını IValidator<Product> arayüzü ile ilişkilendiriyorum. Böylece DI container bu arayüzü kullanarak ProductValidator sınıfının bir örneğini sağlayacak.
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly()); // kullanacağımı belirttim ve assembly ile gerekli automapper kurallarını git ve bul.
 builder.Services.AddControllers();
 
 
